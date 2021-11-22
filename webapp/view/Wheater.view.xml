@@ -1,0 +1,150 @@
+<mvc:View controllerName="wheater.wheater.controller.Wheater"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Page id="page" title="{i18n>title}">
+        <content>
+        <VBox>
+        <SearchField
+			id="searchField"
+			width="100%"
+			placeholder="{i18n>searchCity}"
+			enableSuggestions="true"
+			search=".onSearch"
+            liveChange=".liveChange" 
+			suggest=".onSuggest"
+            value="{modelTela>/citySelected}"    
+			suggestionItems="{ path: 'modelTela>/Cities' }">
+			<SuggestionItem text="{modelTela>name}" description="{path:'modelTela>country'} {path:'modelTela>countryCode'}" key="{modelTela>id}" />
+		</SearchField>
+        <!-- visible="{= ${modelTela>/Wheater/name} !== '' ? ${modelTela>/Wheater/name} !== null ? ${modelTela>/Wheater/name} !== undefined ? true : false : false : false }" -->
+        <VBox >
+        <f:Form id="FormChange480_12120"
+			editable="false">
+			<f:title>
+				<core:Title text="{modelTela>/Wheater/name}" />
+			</f:title>
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer title="{i18n>weather}">
+					<f:formElements>
+						<f:FormElement label="{modelTela>/Wheater/weather/main} ">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/weather/description}"/>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+                <f:FormContainer title="{i18n>wind}">
+					<f:formElements>
+						<f:FormElement label="{i18n>speed}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/wind/speed}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>degree}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/wind/deg}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer title="{i18n>temperature}">
+					<f:formElements>
+						<f:FormElement label="{i18n>temperature}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/main/temp} {= ${modelTela>/Wheater/main/temp_max} !== '' ? ${modelTela>/Wheater/main/temp_max} !== null ? ${i18n>celsius} : '' : '' }" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>feels_like}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/main/feels_like} {= ${modelTela>/Wheater/main/temp_max} !== '' ? ${modelTela>/Wheater/main/temp_max} !== null ? ${i18n>celsius} : '' : '' }" />
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="{i18n>max}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/main/temp_min} {= ${modelTela>/Wheater/main/temp_max} !== '' ? ${modelTela>/Wheater/main/temp_max} !== null ? ${i18n>celsius} : '' : '' }" />
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="{i18n>min}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/main/temp_max} {= ${modelTela>/Wheater/main/temp_max} !== '' ? ${modelTela>/Wheater/main/temp_max} !== null ? ${i18n>celsius} : '' : '' }" />
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="{i18n>pressure}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/main/pressure}" />
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="{i18n>humidity}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/main/humidity}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form id="FormChange480_12120-2"
+			editable="false">
+			<f:title>
+				<core:Title text="{i18n>location}" />
+			</f:title>
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="12"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer title="{i18n>coordinates}">
+					<f:formElements>
+						<f:FormElement label="{i18n>latitude}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/coord/lat}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>longitude}">
+							<f:fields>
+								<Label text="{modelTela>/Wheater/coord/lon}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+        </VBox>
+        
+        
+        </VBox>
+        </content>
+    </Page>
+</mvc:View>
